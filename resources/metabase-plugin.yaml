@@ -1,6 +1,6 @@
 info:
   name: Metabase Databricks SQL Driver
-  version: 0.1.0
+  version: 0.1.1
   description: Allows Metabase to connect to Databricks SQL werehouse
 dependencies:
   - plugin: Metabase Spark SQL Driver
@@ -24,6 +24,10 @@ driver:
       - name: schema-filters
         type: schema-filters
         display-name: Schemas  
+      - merge:
+        - additional-options
+        - name: jdbc-flags
+          placeholder: ';option=value'
       - advanced-options-start
       - default-advanced-options
 init:

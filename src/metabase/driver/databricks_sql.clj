@@ -24,10 +24,10 @@
 (driver/register! :databricks-sql, :parent :sql-jdbc)
 
 (defmethod sql-jdbc.conn/connection-details->spec :databricks-sql
-  [_ {:keys [host http-path password schema db]}]
+  [_ {:keys [host http-path password schema db jdbc-flags]}]
   {:classname        "com.databricks.client.jdbc.Driver"
    :subprotocol      "databricks"
-   :subname          (str "//" host ":443/" schema)
+   :subname          (str "//" host ":443/" schema jdbc-flags)
    :transportMode    "http"
    :ssl              1
    :AuthMech         3
